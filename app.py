@@ -28,7 +28,7 @@ def estudiante ():#perfil docente
     return render_template("Perfildocente.html")
 
 
-@app.route("/indicadores1",methods = ["GET","POST"])
+@app.route("/indicadores",methods = ["GET","POST"])
 def indicadoes ():#indicadores 
     return render_template("indicadores.html")
     
