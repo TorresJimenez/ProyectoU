@@ -1,0 +1,3 @@
+Se elimino la carpeta venv dcel entorno virtual como recomendación del tutor.
+
+Sedebe añadir las librerias e instalar flask.
