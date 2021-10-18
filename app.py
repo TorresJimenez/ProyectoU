@@ -9,7 +9,7 @@ from flask import render_template as render
 #INSTANCIA  DE OBJETO FLASK 
 app= Flask(__name__)
 
-@app.route("/home1",methods = ["GET"])#principal
+@app.route("/home2",methods = ["GET"])#principal
 def home ():
     return render_template("index.html")
 
