@@ -1,0 +1,60 @@
+*{  
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    background-image: url('azul.jpg');/* imagen de fondo*/
+}
+
+.form-regis{ /*formulario*/
+    width: 400px;
+    background: #C70039;
+    padding: 30px;
+    margin: auto;
+    margin-top: 100px;
+    border-radius: 4px;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    -ms-border-radius: 4px;
+    -o-border-radius: 4px;
+    color: white;
+    box-shadow: 7px 13px 37px #000;
+}
+
+.form-regis h4 { /*letras de arriba del formulario*/
+    font-size: 22px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.control { /*cajas de texto*/
+    width: 100%;
+    margin-bottom: 20px;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    border: 1px solid black;
+    font-size: 18px;
+    color: #000;
+}
+
+.form-regis p{  /*texto*/
+    font-size: 18px;
+    
+}
+
+.form-regis .boton {/*boton*/
+   width: 100%;
+   background-color: #0C607A;
+   border: none;
+   padding: 12px;
+   color: white;
+   margin: 16px 0;
+   font-size: 18px;
+   box-shadow: 7px 13px 37px #000
+}
+.form-regis .boton:hover { /*cambio de color del boton al pasar el mouse*/
+    background-color: #C7B900;
+    box-shadow: 7px 13px 37px #000
+}
