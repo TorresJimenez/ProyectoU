@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <title>Registro de Usuarios</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style1.css" rel="stylesheet">
+    </head>
+    <body>
+        <section class="form-regis">
+            <h4>REGISTRO DE USUARIOS</h4> 
+            <p >Tipo de Usuario </p>
+            <select class="control">
+                <option value="1"></option>
+                <option value="2">Admin</option>
+                <option value="3">Docente</option>
+                <option value="4">Estudiante</option>
+            </select>
+            <p>Nombre completo: </p>
+            <input class="control" type="text" id="name" name="name" placeholder="ingrese su nombre">
+            <input class="control" type="text" id="ape" name="ape" placeholder="ingrese sus apellidos">
+            <p>Identificacion: </p>
+            <input class="control" type="text" id="iden" name="iden" placeholder="ingrese su identificacion">
+            <p>Fecha de nacimiento</p>
+            <input class="control" type="date" id="fecha" name="fecha">
+            <fieldset class="control">
+                <legend >Genero</legend>
+                <label >
+                    <input type="radio" name="genero" value="Masculino" checked="checked"> Masculino
+                 </label>
+                 <label >
+                    <input type="radio" name="genero" value="Femenino"> Femenino
+                 </label>
+                 <label >
+                    <input type="radio" name="genero" value="Otro"> Otro
+                 </label>
+            </fieldset >
+            <p>Correo electronico</p>
+            <input class="control" type="email" id="correo" name="correo" placeholder="ingrese su correo">
+            <p>Contraseña</p>
+            <input class="control" type="password" id="contra" name="contra" placeholder="ingrese la contraseña">
+            <input type="submit" class="boton" value="Registrar" onclick=""><!-- el onclick es donde se pone el comando de registro -->
+        </section>
+    
+    </body>
+</html>
