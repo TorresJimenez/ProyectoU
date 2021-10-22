@@ -9,7 +9,7 @@ from flask import render_template as render
 #INSTANCIA  DE OBJETO FLASK 
 app= Flask(__name__)
 
-@app.route("/home1",methods = ["GET"])#principal
+@app.route("/home",methods = ["GET"])#principal
 def home ():
     return render_template("index.html")
 
@@ -24,12 +24,17 @@ def adminregistro ():
 
 
 @app.route("/perfildocente",methods = ["GET","POST"])
-def estudiante ():#perfil docente 
-    return render_template("Perfildocente.html")
+def docente ():#perfil docente 
+    return render_template("perfildocente.html")
+
+@app.route("/perfilestudiante",methods = ["GET","POST"])
+def estudiante ():#perfil estudiante
+    return render_template("perfilestudiante.html")
+
 
 
 @app.route("/indicadores",methods = ["GET","POST"])
-def indicadoes ():#indicadores 
+def indicadores ():#indicadores 
     return render_template("indicadores.html")
     
 #-------------------------CRUD-----------
@@ -141,11 +146,11 @@ def Actividad_crear():
 #--------resto de rutas----
 
 
-@app.route("/docente_calificar",methods = ["POST"])#docente
+@app.route("/docente_calificar",methods = ["POST","GET"])#docente
 def docentecalificar():
     return render_template("Calificar.html")
 
-@app.route("/docente_comentar",methods = ["POST"])#docente
+@app.route("/docente_comentar",methods = ["POST","GET"])#docente/lista
 def comentar():
     return render_template ("Retroalimentacion.html")
 

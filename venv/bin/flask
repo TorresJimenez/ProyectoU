@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' "/home/spin/Documentos/Entrega3_nuevo_con_dashboard/Entrega3_nuevo-con dasboard/venv/bin/python3" "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from flask.cli import main
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(main())
