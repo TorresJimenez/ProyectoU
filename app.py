@@ -148,14 +148,14 @@ def Actividad_crear():
 
 @app.route("/docente_calificar",methods = ["POST","GET"])#docente
 def docentecalificar():
-    return render_template("Calificar.html")
+    return render_template("calificar.html")
 
 @app.route("/docente_comentar",methods = ["POST","GET"])#docente/lista
 def comentar():
     return render_template ("Retroalimentacion.html")
 
 
-@app.route("/estudiante_vernota",methods = ["GET"])#Estudiante
+@app.route("/estudiante_vernota",methods = ["POST","GET"])#Estudiante
 def estudiantevernota():
   return render_template ("ver_calificacion.thml")
  
