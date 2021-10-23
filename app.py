@@ -1,7 +1,7 @@
 import json
 
 #ultimo con indicadores 
-from flask import Flask  , request, redirect 
+from flask import Flask, request, redirect 
 from flask import render_template 
 from flask import render_template as render
 
@@ -163,7 +163,12 @@ def estudiantevernota():
 def estudiantevercomen():
     return render_template("ver_retroalimentacion.html")
 
+@app.route("/regisusu",methods = ["GET"])#Estudiante
+def regisUsu():
+  return render_template ("regisUsu.html")
 
-
+@app.route("/regisnota",methods = ["GET"])#Estudiante
+def regisNota():
+  return render_template ("regisNota.html")
 
 
