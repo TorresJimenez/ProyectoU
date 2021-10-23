@@ -4,7 +4,7 @@ import json
 from flask import Flask  , request, redirect 
 from flask import render_template 
 from flask import render_template as render
-from bd import insertar, consultar
+
 
 #INSTANCIA  DE OBJETO FLASK 
 app= Flask(__name__)
