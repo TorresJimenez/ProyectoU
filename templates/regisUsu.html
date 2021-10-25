@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
     <head>
-        <title>Registro de Usuarios</title>
+        <title>{% block title %}Registro de Usuarios{% endblock %}</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/static/css/style1.css" rel="stylesheet">
     </head>
     <body>
+        {% block body %} 
         <section class="form-regis">
             <h4>REGISTRO DE USUARIOS</h4> 
             <p >Tipo de Usuario </p>
@@ -17,7 +18,7 @@
                 <option value="4">Estudiante</option>
             </select>
             <p>Nombre completo: </p>
-            <input class="control" type="text" id="name" name="name" placeholder="ingrese su nombre">
+            <input class="control" type="text" id="name" name="name" placeholder="ingrese su nombre" value='{{ frm.Nombre }}'>
             <input class="control" type="text" id="ape" name="ape" placeholder="ingrese sus apellidos">
             <p>Identificacion: </p>
             <input class="control" type="text" id="iden" name="iden" placeholder="ingrese su identificacion">
@@ -41,6 +42,6 @@
             <input class="control" type="password" id="contra" name="contra" placeholder="ingrese la contraseña">
             <input type="submit" class="boton" value="Registrar" onclick=""><!-- el onclick es donde se pone el comando de registro -->
         </section>
-    
+    {% endblock body %} 
     </body>
 </html>

@@ -1,0 +1,99 @@
+
+{% extends "baseregistro.html" %}
+
+{% block title %}  
+Registro de Usuarios
+{% endblock %}
+
+
+{% block tipoUsuario %}  
+Tipo
+{% endblock %}
+
+
+
+
+
+{% block content %}  
+<form action="" method="post">
+    {{ frm.hidden_tag() }}
+
+    <p>
+        {{frm.Nombre.label}}
+        {{frm.Nombre}}
+        {% for error in frm.Nombre.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.Apellido.label}}
+        {{frm.Apellido}}
+        {% for error in frm.Apellido.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.Email.label}}
+        {{frm.Email}}
+        {% for error in frm.Email.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.Telefono.label}}
+        {{frm.Telefono}}
+        {% for error in frm.Telefono.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.Genero.label}}
+        {{frm.Genero}}
+        {% for error in frm.Genero.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.Rol.label}}
+        {{frm.Rol}}
+        {% for error in frm.Rol.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.User.label}}
+        {{frm.User}}
+        {% for error in frm.User.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.password.label}}
+        {{frm.password}}
+        {% for error in frm.password.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    
+    {{ frm.enviar }}
+    
+
+
+</form>
+{% endblock %}

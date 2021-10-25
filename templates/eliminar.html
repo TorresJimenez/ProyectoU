@@ -1,0 +1,40 @@
+
+{% extends "baseregistro.html" %}
+
+{% block title %}  
+Eliminar de Usuarios
+{% endblock %}
+
+
+{% block tipoUsuario %}  
+Tipo
+{% endblock %}
+
+
+
+
+
+{% block content %}  
+<form action="" method="post">
+    {{ frm.hidden_tag() }}
+
+   
+    <p>
+        {{frm.User.label}}
+        {{frm.User}}
+        {% for error in frm.User.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+   
+    
+
+    
+    {{ frm.eliminar }}
+    
+
+
+</form>
+{% endblock %}

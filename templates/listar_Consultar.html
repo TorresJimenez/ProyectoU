@@ -1,0 +1,32 @@
+
+{% extends "baseregistro.html" %}
+
+{% block title %}  
+Consulta lista de usuarios 
+{% endblock %}
+
+
+{% block content %}  
+<table>
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>User</th>
+            <th>Email</th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for usu in rows %}
+        <tr>
+            <td>{{ usu["Nombre"] }} </td> 
+            <td>{{ usu["User"] }} </td>
+            <td>{{ usu["Email"] }} </td>
+        </tr>   
+        {% endfor %}
+    </tbody>  
+</table>
+{% endblock %}
+
+
+

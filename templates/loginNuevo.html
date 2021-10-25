@@ -1,0 +1,42 @@
+{% extends "baseregistro.html" %}
+
+{% block title %}  
+Login de Usuario
+{% endblock %}
+
+
+{% block tipoUsuario %}  
+Tipo
+{% endblock %}
+
+
+
+
+
+{% block content %}  
+<form action="" method="post">
+    {{ frm.hidden_tag() }}
+
+    <p>
+        {{frm.User.label}}
+        {{frm.User}}
+        {% for error in frm.User.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    <p>
+        {{frm.password.label}}
+        {{frm.password}}
+        {% for error in frm.password.errors%}  
+        <div>
+            {{error}}
+        </div>
+        {% endfor %}
+    </p>
+    
+    {{ frm.entrar }}
+
+</form>
+{% endblock %}

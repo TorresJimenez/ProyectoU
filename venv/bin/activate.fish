@@ -29,7 +29,7 @@ end
 # unset irrelevant variables
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV "/home/spin/Documentos/Entrega3_nuevo_con_dashboard/Entrega3_nuevo-con dasboard/venv"
+set -gx VIRTUAL_ENV "/home/spin/Escritorio/Entrega4/gestion-notas/venv"
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/bin" $PATH
