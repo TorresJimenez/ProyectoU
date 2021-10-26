@@ -1,47 +1,191 @@
+
+
 <!DOCTYPE html>
-<html lang="es">
-    <head>
-        <title>{% block title %}Registro de Usuarios{% endblock %}</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link href="/static/css/style1.css" rel="stylesheet">
-    </head>
-    <body>
-        {% block body %} 
-        <section class="form-regis">
-            <h4>REGISTRO DE USUARIOS</h4> 
-            <p >Tipo de Usuario </p>
-            <select class="control">
-                <option value="1"></option>
-                <option value="2">Admin</option>
-                <option value="3">Docente</option>
-                <option value="4">Estudiante</option>
-            </select>
-            <p>Nombre completo: </p>
-            <input class="control" type="text" id="name" name="name" placeholder="ingrese su nombre" value='{{ frm.Nombre }}'>
-            <input class="control" type="text" id="ape" name="ape" placeholder="ingrese sus apellidos">
-            <p>Identificacion: </p>
-            <input class="control" type="text" id="iden" name="iden" placeholder="ingrese su identificacion">
-            <p>Fecha de nacimiento</p>
-            <input class="control" type="date" id="fecha" name="fecha">
-            <fieldset class="control">
-                <legend >Genero</legend>
-                <label >
-                    <input type="radio" name="genero" value="Masculino" checked="checked"> Masculino
-                 </label>
-                 <label >
-                    <input type="radio" name="genero" value="Femenino"> Femenino
-                 </label>
-                 <label >
-                    <input type="radio" name="genero" value="Otro"> Otro
-                 </label>
-            </fieldset >
-            <p>Correo electronico</p>
-            <input class="control" type="email" id="correo" name="correo" placeholder="ingrese su correo">
-            <p>Contraseña</p>
-            <input class="control" type="password" id="contra" name="contra" placeholder="ingrese la contraseña">
-            <input type="submit" class="boton" value="Registrar" onclick=""><!-- el onclick es donde se pone el comando de registro -->
-        </section>
-    {% endblock body %} 
-    </body>
+<html lang="en">
+
+<head>
+   <!-- basic -->
+   <meta charset="utf-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <!-- mobile metas -->
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+   <!-- site metas -->
+   <title>U del Rosario</title>
+   <meta name="keywords" content="">
+   <meta name="description" content="">
+   <meta name="author" content="">
+   <!-- bootstrap css -->
+   <link rel="stylesheet" href="static/css/bootstrap.min.css">
+   <!-- style css -->
+   <link rel="stylesheet" href="static/css/style.css">
+   <!-- Responsive-->
+   <link rel="stylesheet" href="static/css/responsive.css">
+   <!-- fevicon -->
+   <link rel="icon" href="static/images/fevicon.png" type="image/gif" />
+   <!-- Scrollbar Custom CSS -->
+   <link rel="stylesheet" href="static/css/jquery.mCustomScrollbar.min.css">
+   <!-- Tweaks for older IEs-->
+   <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+</head>
+<!-- body -->
+
+<body class="main-layout home_page">
+   <!-- loader  -->
+   <div class="loader_bg">
+      <div class="loader"><img src="static/images/loading.gif" alt="#" /></div>
+   </div> 
+   <!-- end loader -->
+   <!-- header -->
+   <header>
+      <!-- header inner -->
+      <div class="header">
+         <div class="container">
+            <div class="row">
+               <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col logo_section">
+                  <div class="full">
+                     <div class="center-desk">
+                        <div class="logo"> <a href="/"><img src="static/images/logo3.png" alt="#"></a> </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-xl-9 col-lg-9 col-md-9 col-sm-9">
+                  <div class="menu-area">
+                     <div class="limit-box">
+                        <nav class="main-menu">
+                           <ul class="menu-area-main">
+                              <li class="active"> <a href="/home">Home</a> </li>
+                              <li> <a href="about.html"> </a> </li>
+                              <li><a href="books.html"></a></li>
+                              <li><a href="library.html"></a></li>
+                              <li><a href="contact.html"> </a></li>
+                              
+                              <!-- <li class="mean-last"> <a href="#"><img src="images/search_icon.png" alt="#" /></a> </li>
+                              <li class="mean-last"> <a href="#"><img src="images/top-icon.png" alt="#" /></a> </li> -->
+                           </ul>
+                        </nav>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+
+      <!-- end header inner -->
+   </header>
+   <!-- end header -->
+   <section class="slider_section">
+      <div id="myCarousel" class="carousel slide banner-main" data-ride="carousel">
+         <div class="carousel-inner">
+            <div class="carousel-item active">
+               <img class="first-slide" src="static/images/bannernuevo2.jpg" alt="First slide">
+               <div class="container">
+                  <div class="carousel-caption relative">
+                     <h1>
+                        Registro Usuario 
+                     </h1>
+                     <form action="" method="post">
+                        {{ frm.hidden_tag() }}
+                    
+                        <p>
+                            {{frm.Nombre.label}}
+                            {{frm.Nombre}}
+                            {% for error in frm.Nombre.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.Apellidos.label}}
+                            {{frm.Apellidos}}
+                            {% for error in frm.Apellidos.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.Email.label}}
+                            {{frm.Email}}
+                            {% for error in frm.Email.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.Telefono.label}}
+                            {{frm.Telefono}}
+                            {% for error in frm.Telefono.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.Genero.label}}
+                            {{frm.Genero}}
+                            {% for error in frm.Genero.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.Rol.label}}
+                            {{frm.Rol}}
+                            {% for error in frm.Rol.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.User.label}}
+                            {{frm.User}}
+                            {% for error in frm.User.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        <p>
+                            {{frm.password.label}}
+                            {{frm.password}}
+                            {% for error in frm.password.errors%}  
+                            <div>
+                                {{error}}
+                            </div>
+                            {% endfor %}
+                        </p>
+                        
+                        {{ frm.enviar }}
+                    </form>
+                     
+                     <!-- <form action="">
+                        </form>
+                        
+                        <input type="text" placeholder="usuario">
+                        <br>
+                        <br>
+                        <input type="password" placeholder="password">
+                        
+                    </form>
+                     <div class="button_section"> <a class="main_bt" href="{{ url_for('adminregistro')}}">ingresar </a> </div>
+                      -->
+   <!-- end footer -->
+   <!-- Javascript files-->
+   <script src="static/js/jquery.min.js"></script>
+   <script src="static/js/popper.min.js"></script>
+   <script src="static/js/bootstrap.bundle.min.js"></script>
+   <script src="static/js/jquery-3.0.0.min.js"></script>
+   <script src="static/js/plugin.js"></script>
+   <!-- sidebar -->
+   <script src="static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+   <script src="static/js/custom.js"></script>
+</body>
+
 </html>

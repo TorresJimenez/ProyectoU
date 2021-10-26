@@ -26,7 +26,7 @@ def registrousuario():
     if frm.validate_on_submit():
         
         Nombre =frm.Nombre.data
-        Apellido=frm.Apellido.data
+        Apellidos=frm.Apellidos.data
         Email=frm.Email.data
         Telefono=frm.Telefono.data
         Genero=frm.Genero.data
@@ -37,11 +37,11 @@ def registrousuario():
         encrp=hashlib.sha256(password.encode('utf-8'))
         pass_enc=encrp.hexdigest()
         #conexion parala base de datos 
-        with sqlite3.connect("Universidad_del_rosario_database.db") as con:
+        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
             #crea un cursor
             cur=con.cursor()
             #sentencia en sql
-            cur.execute("INSERT INTO persona (Nombre, Apellido, Email, Telefono, Genero, Rol, User, password) VALUES (?,?,?,?,?,?,?,?)",[Nombre, Apellido, Email, Telefono, Genero, Rol, User,pass_enc] )
+            cur.execute("INSERT INTO Persona (Nombre, Apellidos, Email, Telefono, Genero, Rol, User, password) VALUES (?,?,?,?,?,?,?,?)",[Nombre, Apellidos, Email, Telefono, Genero, Rol, User,pass_enc] )
             #ejecuta la sentencia sql
             con.commit()
             return"Registro Guardado con exito <a href='/perfiladministrador'> Mi Perfil </a>"
@@ -49,7 +49,7 @@ def registrousuario():
     return render_template ("registroUsuario.html",frm=frm)
 
 #login---------
-@app.route("/loginnuevo",methods=["GET","POST"])
+@app.route("/login",methods=["GET","POST"])
 def login2():
     frm = Login2()
     if frm.validate_on_submit():
@@ -58,17 +58,19 @@ def login2():
         #cifrar contraseña 
         encrp=hashlib.sha256(password.encode('utf-8'))
         pass_enc=encrp.hexdigest()
-        with sqlite3.connect("Universidad_del_rosario_database.db") as con:
+        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
             #crea un cursor
             cur=con.cursor()
             cur.execute("SELECT * FROM persona WHERE User = ? AND password =?",[User,pass_enc])
 
             if cur.fetchone():
+
                 return "Bienvenido(a)!!!!"
+                
             else:
                 return"Usuario/password Incorrectos"
 
-    return render_template("loginNuevo.html",frm=frm)
+    return render_template("login.html",frm=frm)
 
 #------eliminar#-------------------------CRUD2-----------
 @app.route("/eliminarusuario",methods=["GET","POST"])
@@ -77,7 +79,7 @@ def eliminacionusuario():
     if request.method == "POST":
         User = frm.User.data
         
-        with sqlite3.connect("Universidad_del_rosario_database.db") as con:
+        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
             
             cur=con.cursor()
             cur.execute("DELETE FROM persona WHERE User = ? ",[User])
@@ -90,7 +92,7 @@ def eliminacionusuario():
 @app.route("/consulta",methods=["GET","POST"])
 def consultadeusuariosexistentes():
  
-    with sqlite3.connect("Universidad_del_rosario_database.db") as con:
+    with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
         con.row_factory = sqlite3.Row
         cur=con.cursor()
         cur.execute("SELECT* FROM persona")
@@ -113,9 +115,7 @@ def registroUsu():
 def home ():
     return render_template("index.html")
 
-@app.route("/login",methods = ["GET","POST"])#login con diseño
-def login ():
-    return render_template("login.html")
+
     
 
 @app.route("/perfiladministrador",methods = ["GET","POST"])#perfil admin
