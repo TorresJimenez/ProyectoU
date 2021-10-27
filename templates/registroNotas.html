@@ -1,0 +1,17 @@
+{% block content %}
+
+<h1>calificaciones</h1>
+<hr>
+
+    <form action ="/registroNota" method="post">
+        <p>{{form.nota.label}} <br> {{form.nota()}}</p>
+        <p>{{form.retroalimentacion.label}} <br> {{form.retroalimentacion()}}</p>
+       
+        
+    </form>
+
+    <hr>
+    {{ form.Agregar }}
+    <p>{{ mensaje }}</p>
+
+{% endblock %}

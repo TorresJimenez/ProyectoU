@@ -1,4 +1,6 @@
 import json
+import  bd 
+
 
 #GRUPO 8 
 from flask import Flask, request, redirect 
@@ -8,7 +10,7 @@ from flask import render_template as render
 import sqlite3
 import os
 
-from forms.formulario import Login2, RegistroPersona
+from forms.formulario import Login2, RegistroPersona, Notas
 #------para encriptar----
 import hashlib
 
@@ -47,6 +49,24 @@ def registrousuario():
             return"Registro Guardado con exito <a href='/perfiladministrador'> Mi Perfil </a>"
 
     return render_template ("registroUsuario.html",frm=frm)
+
+#-----registro notas 
+@app.route("/registroNota",methods = ["GET","POST"]) 
+def registroNota():
+    formato = Notas()
+    if request.method == "POST" :
+        calificaicion = formato.nota.data
+        retro = formato.nota.data
+        validacion =bd.insertNota(calificaicion,retro)
+        if validacion:
+            mnj ="Producto registrado"
+            return render_template("registroNotas.html", form = formato, mensaje = mnj)
+        else:
+            return "<h1>no se hizo el registro</h1>"
+    else:
+        return render_template("registroNotas.html", form = formato)
+
+#--------
 
 #login---------
 @app.route("/login",methods=["GET","POST"])
@@ -101,6 +121,23 @@ def consultadeusuariosexistentes():
         return render_template("listar_Consultar.html",rows=rows)
 
     # return render_template("eliminar.html",frm=frm)
+
+#-------------------------consulta de notas general de todos los estudiantes -----------
+@app.route("/consultanota_retro",methods=["GET","POST"])
+def consultanota_retro():
+ 
+    with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+        con.row_factory = sqlite3.Row
+        cur=con.cursor()
+        cur.execute("SELECT* FROM Nota")
+        rows = cur.fetchall()
+
+        return render_template("listar_Nota.html",rows=rows)
+
+
+
+
+
 
 
 

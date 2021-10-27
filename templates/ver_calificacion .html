@@ -1,12 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>U del rosario</title>
-</head>
-<body>
-    <h1> ver mis calificaciones  </h1>
-</body>
-</html>
+{% extends "baseregistro.html" %}
+
+{% block title %}  
+Consulta lista de usuarios 
+{% endblock %}
+
+
+{% block content %}  
+<table>
+    <thead>
+        <tr>
+            
+            <th>Nota</th>
+            <th>comentario </th>
+        </tr>
+
+    </thead>
+    <tbody>
+        {% for usu in rows %}
+        <tr>
+            <td>{{ usu["Nota"] }} </td>
+            <td>{{ usu["Retroalimentación"] }} </td>
+        </tr>   
+        {% endfor %}
+    </tbody>  
+</table>
+{% endblock %} 
+

@@ -1,5 +1,5 @@
 from flask_wtf import FlaskForm
-from wtforms import StringField,PasswordField, SubmitField,IntegerField
+from wtforms import StringField,PasswordField,SubmitField,IntegerField
 from wtforms.validators import DataRequired
 
 class RegistroPersona(FlaskForm):
@@ -16,10 +16,12 @@ class RegistroPersona(FlaskForm):
     eliminar =SubmitField("Eliminar")#para eleminar 
     #consultar =SubmitField("Consultar")#para eleminar 
 
-
-
 class Login2(FlaskForm):
     User=StringField("Usuario",validators=[DataRequired ()])
     password =PasswordField("Contraseña",validators=[DataRequired ()])
     entrar =SubmitField("Entrar")
 
+class Notas(FlaskForm):#registrar nota 
+    nota = IntegerField("nota", validators = [DataRequired()])
+    retroalimentacion = StringField("retroalimentacion", validators = [DataRequired()])
+    Agregar =SubmitField("Agregar")
