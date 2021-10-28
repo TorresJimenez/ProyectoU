@@ -2,7 +2,7 @@
 {% extends "baseregistro.html" %}
 
 {% block title %}  
-Consulta lista de usuarios 
+Lista de Notas 
 {% endblock %}
 
 
@@ -10,17 +10,22 @@ Consulta lista de usuarios
 <table>
     <thead>
         <tr>
-            
+            <th>ID-Estudiante</th>
+            <th>ID-Actividad </th>
             <th>Nota</th>
-            <th>comentario </th>
+            <th>Comentario </th>
+            
         </tr>
 
     </thead>
     <tbody>
         {% for usu in rows %}
         <tr>
+            <td>{{ usu["id_estudiante"] }} </td>
+            <td>{{ usu["id_actividad"] }} </td>
             <td>{{ usu["Nota"] }} </td>
-            <td>{{ usu["Retroalimentación"] }} </td>
+            <td>{{ usu["Retroalimentacion"] }} </td>
+            
         </tr>   
         {% endfor %}
     </tbody>  

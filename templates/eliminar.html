@@ -1,4 +1,4 @@
-
+<!-- 
 {% extends "baseregistro.html" %}
 
 {% block title %}  
@@ -34,7 +34,71 @@ Tipo
     
     {{ frm.eliminar }}
     
+    {% for msg in get_flashed_messages() %}
+      <div>
+        {{ msg }}
+      </div>
+      {% endfor %}
 
 
 </form>
-{% endblock %}
+{% endblock %} -->
+
+<!-- #nueva plantilla que combina con el login  -->
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Registro notas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'><link rel="stylesheet" href="static/css/style2.css">
+<h1>ElIMINAR USUARIOS</h1> 
+</head>
+<body>
+<div class='box'>
+  <div class='box-form'>
+    <div class='box-login-tab'></div>
+    <div class='box-login-title'>
+      <div class='i i-login'></div><h2>Eliminar</h2>
+    </div>
+    <div class='box-login'>
+      <div class='fieldset-body' id='login_form'>
+  
+        
+          
+        <form action="" method="post">
+          {{ frm.hidden_tag() }}
+            <p>
+              {{frm.User.label}}
+              {{frm.User}}
+              {% for error in frm.User.errors%}  
+              <div>
+                {{error}}
+              </div>
+              {% endfor %}
+            </p>
+            
+            {{ frm.eliminar }}
+        </form>
+          {% for msg in get_flashed_messages() %}
+            <div>
+              {{ msg }}
+            </div>
+          {% endfor %}
+
+        </div>
+      </div>
+    </div>
+
+
+ <div class='icon-credits'>Icons made by <a href="http://www.freepik.com" title="Freepik">Freepik</a>, <a href="http://www.flaticon.com/authors/budi-tanrim" title="Budi Tanrim">Budi Tanrim</a> & <a href="http://www.flaticon.com/authors/nice-and-serious" title="Nice and Serious">Nice and Serious</a> from <a href="http://www.flaticon.com" title="Flaticon">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">CC 3.0 BY</a></div>
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script><script  src="static/js/script.js"></script>
+
+</body>
+</html> 
+
+
+
+

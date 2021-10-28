@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="en" >
 <head>
@@ -6,14 +7,14 @@
   <title>Registro notas</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'><link rel="stylesheet" href="static/css/style2.css">
-<h1>REGISTRO DE NOTAS  </h1> 
+<h1>ElIMINAR NOTAS  </h1> 
 </head>
 <body>
 <div class='box'>
   <div class='box-form'>
     <div class='box-login-tab'></div>
     <div class='box-login-title'>
-      <div class='i i-login'></div><h2>Registro</h2>
+      <div class='i i-login'></div><h2>Eliminar</h2>
     </div>
     <div class='box-login'>
       <div class='fieldset-body' id='login_form'>
@@ -21,52 +22,23 @@
         <form action="" method="post">
             {{ frm.hidden_tag() }}
             <p>
-                {{frm.id_actividad.label}}
-                {{frm.id_actividad}}
-                {% for error in frm.id_actividad.errors%}  
-                <div>
-                    {{error}}
-                </div>
-                {% endfor %}
+              {{frm.id_nota.label}}
+              {{frm.id_nota}}
+              {% for error in frm.id_nota.errors%}  
+              <div>
+                  {{error}}
+              </div>
+              {% endfor %}
             </p>
-            <p>
-                {{frm.id_estudiante.label}}
-                {{frm.id_estudiante}}
-                {% for error in frm.id_estudiante.errors%}  
-                <div>
-                    {{error}}
-                </div>
-                {% endfor %}
-            </p>
-            <p>
-                {{frm.Nota.label}}
-                {{frm.Nota}}
-                {% for error in frm.Nota.errors%}  
-                <div>
-                    {{error}}
-                </div>
-                {% endfor %}
-            </p>
-            <p>
-                {{frm.Retroalimentacion .label}}
-                {{frm.Retroalimentacion }}
-                {% for error in frm.Retroalimentacion.errors%}  
-                <div>
-                    {{error}}
-                </div>
-                {% endfor %}
-            </p>
-          
         
-            {{ frm.guardar }}
-            
+            {{ frm.eliminar }}
         </form>
-      </div>
         {% for msg in get_flashed_messages() %}
           <div>
             {{ msg }}
           </div>
         {% endfor %}
+      </div>
     </div>
   </div>
 
@@ -75,6 +47,7 @@
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.min.js'></script><script  src="static/js/script.js"></script>
+<script src="{{ url_for('static',filename='js/jquery.validate.js')}}"></script>
 
 </body>
 </html> 

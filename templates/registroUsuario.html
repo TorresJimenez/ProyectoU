@@ -1,10 +1,10 @@
 
-#nueva plantilla que combina con el login 
+<!-- #nueva plantilla que combina con el login  -->
 <!DOCTYPE html>
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - DailyUI #001 - Sign Up</title>
+  <title>Registro Usuario</title>
   <meta name="viewport" content="width=device-width, initial-scale=1"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.3/animate.min.css'><link rel="stylesheet" href="static/css/style2.css">
 <h1>REGISTRO PARA USUARIOS </h1> 
@@ -20,7 +20,9 @@
       <div class='fieldset-body' id='login_form'>
        
         <form action="" method="post">
+
             {{ frm.hidden_tag() }}
+            <a href ="/logout"> Cerrar sesión </a>
             <p>
                 {{frm.Nombre.label}}
                 {{frm.Nombre}}
@@ -93,11 +95,13 @@
                 </div>
                 {% endfor %}
             </p>
-            
             {{ frm.enviar }}
-            
         </form>
-        
+        {% for msg in get_flashed_messages() %}
+            <div>
+             {{ msg }}
+            </div>
+        {% endfor %}
       </div>
     </div>
   </div>

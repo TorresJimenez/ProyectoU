@@ -25,7 +25,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="dashindex2.html">Perfil Administrativo </a> 
+                <a class="navbar-brand" href="#">Perfil Administrativo </a> 
             </div>
   <div style="color: white;
 padding: 15px 50px 5px 50px;
@@ -42,7 +42,7 @@ font-size: 16px;"> Mi Area de Trabajo   &nbsp; <a href="{{ url_for('home')}}" cl
 				
 					
                     <li>
-                        <a class="active-menu"  href="dashindex2.html"><i class="fa fa-dashboard fa-3x"></i> Menu </a>
+                        <a class="active-menu"  href="#"><i class="fa fa-dashboard fa-3x"></i> Menu </a>
                     </li>
                      
                     
@@ -50,12 +50,22 @@ font-size: 16px;"> Mi Area de Trabajo   &nbsp; <a href="{{ url_for('home')}}" cl
                         <a   href="{{ url_for('indicadores')}}"><i class="fa fa-bar-chart-o fa-3x"></i> Indicadores</a>
                     </li>	
                     
-                    <li  >
+                    <!-- <li  >
                         <a  href="dashform.html"><i class="fa fa-edit fa-3x"></i> Asignaturas </a>
-                    </li>
+                    </li> -->
                     <li  >
                         <a  href="{{ url_for('registrousuario')}}"><i class="fa fa-edit fa-3x"></i> Nuevo Registro </a>
-                     </li>		
+                     </li>
+                     <li>
+                        <a  href="{{ url_for('consultadeusuariosexistentes')}}"><i class="fa fa-edit fa-3x"></i> Consultar Usuarios   </a>
+                     </li>
+                     <li  >
+                        <a  href="{{ url_for('consultanota_retro')}}"><i class="fa fa-edit fa-3x"></i> Consultar Notas</a>
+                     </li>
+                     <li  >
+                        <a  href="{{ url_for('eliminacionusuario')}}"><i class="fa fa-edit fa-3x"></i> Eliminar Usuarios</a>
+                     </li>
+                     		
                      
                 </ul>
                

@@ -1561,7 +1561,11 @@ $.extend( $.validator, {
 	}
 
 } );
+function confirmarBorrado() {
 
+	return confirm("Desea eliminar el registro?");
+
+}
 // Ajax mode: abort
 // usage: $.ajax({ mode: "abort"[, port: "uniqueport"]});
 // if mode:"abort" is used, the previous request on that port (port can be undefined) is aborted via XMLHttpRequest.abort()
