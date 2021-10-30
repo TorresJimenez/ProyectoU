@@ -94,89 +94,133 @@ def registrousuario():
 def logout():
     session.clear()
     return redirect("/login")
-    
+#-----------
+# @app.route("/eliminarusuario",methods=["GET","POST"])
+# def eliminacionusuario():
+#     frm = RegistroPersona()
+  
+#     cur=con.cursor()
+#     row = cur.fetchone()
+#     con.row_factory = sqlite3.Row
+#     if "usuario" in session :
+#     	if row:
+                
+#             session["perfil"] = row["Rol"]
+                
+#             if row["Rol"] == 1:
+#                 if request.method == "POST":
 
-    
-#------eliminarUsuario#-------------------------CRUD2-----------
+#              	    User = frm.User.data
+
+#              		with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:                   
+#                         cur.execute("DELETE FROM personaRegistro WHERE User = ? ",[User])
+#                         con.commit()
+#                     flash("Usuario Eliminado")  
+#                 return render_template("eliminar.html",frm=frm)
+#             else :
+#                 flash("No se identifica este acceso con el usuario")  
+#     else:
+#     	return redirect ("/login")
+
+
+##------eliminarUsuario#-------------------------CRUD2-----------
 @app.route("/eliminarusuario",methods=["GET","POST"])
 def eliminacionusuario():
     frm = RegistroPersona()
-    if request.method == "POST":
-        User = frm.User.data
-        
-        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
-            
-            cur=con.cursor()
-            cur.execute("DELETE FROM personaRegistro WHERE User = ? ",[User])
-            con.commit()
-            flash("Usuario Eliminado")  
+    if "usuario" in session :
+        if session ["Rol"]==1:
+            if request.method == "POST":
+              
+                User = frm.User.data
+              
+                with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+                  
+                    cur=con.cursor()
+                    cur.execute("DELETE FROM personaRegistro WHERE User = ? ",[User])
+                    con.commit()
+                    flash("Usuario Eliminado")  
+            return render_template("eliminar.html",frm=frm)
+    else:
+    	return redirect ("/login")
+      
 
-    return render_template("eliminar.html",frm=frm)
 #---------------------consultar usuarios -----
 @app.route("/consulta",methods=["GET","POST"])
 def consultadeusuariosexistentes():
- 
-    with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
-        con.row_factory = sqlite3.Row
-        cur=con.cursor()
-        cur.execute("SELECT* FROM personaRegistro")
-        rows = cur.fetchall()
+    if "usuario" in session :
+        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+            con.row_factory = sqlite3.Row
+            cur=con.cursor()
+            cur.execute("SELECT* FROM personaRegistro")
+            rows = cur.fetchall()
 
-        return render_template("listar_Consultar.html",rows=rows)
+      
+            return render_template("listar_Consultar.html",rows=rows)
+    else:
+    	return redirect ("/login")
+      
 
 #-----registro notas# 
 @app.route("/registroNota",methods = ["GET","POST"]) 
 def registroNota():
     frm = Notas()
-    if frm.validate_on_submit():
-        id_actividad=frm.id_actividad.data
-        id_estudiante=frm.id_estudiante.data
-        Nota=frm.Nota.data
-        Retroalimentacion=frm.Retroalimentacion.data
+    if "usuario" in session :
+        if frm.validate_on_submit():
+            id_actividad=frm.id_actividad.data
+            id_estudiante=frm.id_estudiante.data
+            Nota=frm.Nota.data
+            Retroalimentacion=frm.Retroalimentacion.data
 
-        print ([id_actividad,id_estudiante,Nota,Retroalimentacion] )
-        #conexion parala base de datos 
-        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
-            #crea un cursor
-            cur=con.cursor()
-            #sentencia en sql
-            cur.execute("INSERT INTO pruebaNota ( id_actividad,id_estudiante,Nota,Retroalimentacion) VALUES (?,?,?,?)",[id_actividad,id_estudiante,float(Nota),Retroalimentacion] )
-            #ejecuta la sentencia sql
-            con.commit()
-            flash("Nota Guardada")
+            print ([id_actividad,id_estudiante,Nota,Retroalimentacion] )
+            #conexion parala base de datos 
+            with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+                #crea un cursor
+                cur=con.cursor()
+                #sentencia en sql
+                cur.execute("INSERT INTO pruebaNota ( id_actividad,id_estudiante,Nota,Retroalimentacion) VALUES (?,?,?,?)",[id_actividad,id_estudiante,float(Nota),Retroalimentacion] )
+                #ejecuta la sentencia sql
+                con.commit()
+                flash("Nota Guardada")
 
-    return render_template ("registroNotas.html",frm=frm)
+        return render_template ("registroNotas.html",frm=frm)
+    else:
+    	return redirect ("/login")
     
 #-------------------------consulta nota  ----
 @app.route("/consultanota_retro",methods=["GET","POST"])
 def consultanota_retro():
- 
-    with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
-        con.row_factory = sqlite3.Row
-        cur=con.cursor()
-        cur.execute("SELECT* FROM pruebaNota")
-        rows = cur.fetchall()
+    if "usuario" in session :
+        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+            con.row_factory = sqlite3.Row
+            cur=con.cursor()
+            cur.execute("SELECT* FROM pruebaNota")
+            rows = cur.fetchall()
 
-        return render_template("listar_Nota.html",rows=rows)
+            return render_template("listar_Nota.html",rows=rows)
+    else:
+    	return redirect ("/login")
+    
 
 #------------------------------eliminar nota 
 
 @app.route("/delete_nota", methods=["GET","POST"])
 def delete_nota():
     frm = Notas()
-    
-    if request.method == "POST":
-        id_nota = escape(frm.id_nota.data)
-        with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
-            cur = con.cursor()
-            cur.execute("DELETE FROM pruebaNota WHERE id_nota = ?", [id_nota])
-            con.commit()
-            if con.total_changes > 0: #para verificar si realmente lo 
-                flash("Nota Eliminada")
-            else:
-                flash("La nota NO se pudo eliminar")
+    if "usuario" in session :
+        if request.method == "POST":
+            id_nota = escape(frm.id_nota.data)
+            with sqlite3.connect("UniversidadDelRosarioDatabaseNumero1.db") as con:
+                cur = con.cursor()
+                cur.execute("DELETE FROM pruebaNota WHERE id_nota = ?", [id_nota])
+                con.commit()
+                if con.total_changes > 0: #para verificar si realmente lo 
+                    flash("Nota Eliminada")
+                else:
+                    flash("La nota NO se pudo eliminar")
 
-    return render_template("Eliminar_Nota.html", frm=frm)
+        return render_template("Eliminar_Nota.html", frm=frm)
+    else:
+    	return redirect ("/login")
 
 
 
@@ -185,6 +229,10 @@ def delete_nota():
 
 
 #--------resto de rutas----
+@app.route("/",methods = ["GET"])
+def home2 ():
+    return render_template("index.html")
+
 @app.route("/home",methods = ["GET"])#principal
 def home ():
     return render_template("index.html")
